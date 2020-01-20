@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { GeolocationService } from './geolocation.service'
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [GeolocationService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
