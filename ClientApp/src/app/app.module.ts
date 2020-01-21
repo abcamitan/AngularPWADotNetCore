@@ -1,3 +1,5 @@
+import 'hammerjs';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,12 +11,15 @@ import { DataService } from './service/data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
          MatToolbarModule, MatCardModule, MatSlideToggleModule } from "@angular/material";
+import { ListComponent } from './list/list.component';
+import { CoffeeComponent } from './coffee/coffee.component';
 
-import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent,
+    CoffeeComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
