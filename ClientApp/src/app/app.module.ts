@@ -35,7 +35,9 @@ import { CoffeeComponent } from './coffee/coffee.component';
     MatCardModule, 
     MatSlideToggleModule,
     RouterModule.forRoot([
-      //{ path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: ListComponent, pathMatch: 'full' },
+      { path: 'coffee', component: CoffeeComponent, pathMatch: 'full' },
+      { path: 'coffee/:id', component: CoffeeComponent, pathMatch: 'full' },
     ])
   ],
   providers: [GeolocationService, DataService],
