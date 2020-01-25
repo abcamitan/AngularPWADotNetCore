@@ -1,44 +1,40 @@
-import 'hammerjs';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { GeolocationService } from "./geolocation.service";
 import { AppComponent } from './app.component';
-import { GeolocationService } from './service/geolocation.service'
-import { DataService } from './service/data.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
-         MatToolbarModule, MatCardModule, MatSlideToggleModule } from "@angular/material";
+import { DataService } from "./data.service";
+
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
+         MatToolbarModule, MatCardModule, MatSlideToggleModule, MatButtonModule, MatFormFieldModule } from "@angular/material";
+import 'hammerjs';
 import { ListComponent } from './list/list.component';
 import { CoffeeComponent } from './coffee/coffee.component';
+import { Routes, RouterModule } from "@angular/router";
 
+import { FormsModule } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
+
+const routes : Routes = [
+  { path: '', component: ListComponent },
+  { path: 'coffee', component: CoffeeComponent },
+  { path: 'coffee/:id', component: CoffeeComponent }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    CoffeeComponent,
+    CoffeeComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
+    RouterModule.forRoot(routes),
     FormsModule,
-    BrowserAnimationsModule,  
-    MatButtonModule, 
-    MatIconModule, 
-    MatInputModule, 
-    MatSelectModule, 
-    MatSliderModule,
-    MatToolbarModule, 
-    MatCardModule, 
-    MatSlideToggleModule,
-    RouterModule.forRoot([
-      { path: '', component: ListComponent, pathMatch: 'full' },
-      { path: 'coffee', component: CoffeeComponent, pathMatch: 'full' },
-      { path: 'coffee/:id', component: CoffeeComponent, pathMatch: 'full' },
-    ])
+    HttpClient,
+    MatFormFieldModule,
+    BrowserModule, BrowserAnimationsModule,
+    MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
+    MatToolbarModule, MatCardModule, MatSlideToggleModule
   ],
   providers: [GeolocationService, DataService],
   bootstrap: [AppComponent]

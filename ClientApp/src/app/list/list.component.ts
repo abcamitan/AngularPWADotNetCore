@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../service/data.service';
-import { Coffee } from '../logic/Coffee';
+import { DataService } from "../data.service";
+import { Coffee } from "../logic/Coffee";
 
 @Component({
   selector: 'app-list',
@@ -9,14 +9,14 @@ import { Coffee } from '../logic/Coffee';
 })
 export class ListComponent implements OnInit {
 
-  list: Coffee[]
+  list : [Coffee]
 
-  constructor(private service: DataService) { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.service.getList(list =>{
+    this.data.getList(list => {
       this.list = list;
-    });
-  }  
+    })
+  }
 
 }
