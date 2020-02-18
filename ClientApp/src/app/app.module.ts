@@ -5,15 +5,17 @@ import { AppComponent } from './app.component';
 import { DataService } from "./data.service";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
-         MatToolbarModule, MatCardModule, MatSlideToggleModule, MatButtonModule, MatFormFieldModule } from "@angular/material";
+import { MdButtonModule, MdIconModule, MdInputModule, MdSelectModule, MdSliderModule,
+         MdToolbarModule, MdCardModule, MdSlideToggleModule,
+         MdSnackBarModule } from "@angular/material";
 import 'hammerjs';
 import { ListComponent } from './list/list.component';
 import { CoffeeComponent } from './coffee/coffee.component';
 import { Routes, RouterModule } from "@angular/router";
+import { ServiceWorkerModule } from "@angular/service-worker";
 
 import { FormsModule } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
+import { HttpModule } from "@angular/http";
 
 const routes : Routes = [
   { path: '', component: ListComponent },
@@ -29,12 +31,10 @@ const routes : Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
-    FormsModule,
-    HttpClient,
-    MatFormFieldModule,
+    FormsModule, HttpModule, ServiceWorkerModule,
     BrowserModule, BrowserAnimationsModule,
-    MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatSliderModule,
-    MatToolbarModule, MatCardModule, MatSlideToggleModule
+    MdButtonModule, MdIconModule, MdInputModule, MdSelectModule, MdSliderModule,
+    MdToolbarModule, MdCardModule, MdSlideToggleModule, MdSnackBarModule
   ],
   providers: [GeolocationService, DataService],
   bootstrap: [AppComponent]

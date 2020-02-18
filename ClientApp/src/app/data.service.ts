@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Coffee } from "./logic/Coffee";
 import { PlaceLocation } from "./logic/PlaceLocation";
-import { HttpClient } from '@angular/common/http';
+import { Http } from "@angular/http";
 
 @Injectable()
 export class DataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: Http) { }
 
   public endpoint = "http://localhost:3000";
 
   get(coffeeId: string, callback) {
     this.http.get(`${this.endpoint}/coffees/${coffeeId}`)
       .subscribe(response => {
-        callback(response);
+        callback(response.json());
       })
   }
 
@@ -25,8 +25,8 @@ export class DataService {
     // callback(list);
     this.http.get(`${this.endpoint}/coffees`)
       .subscribe(response => {
-        console.log(response);
-        callback(response);
+        console.log(response.json());
+        callback(response.json());
       });
   }
 
